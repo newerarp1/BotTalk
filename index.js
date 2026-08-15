@@ -57,31 +57,32 @@ client.on('messageCreate', async (message) => {
     return;
   }
 
-  // --- NEW: -rules command posts a dropdown ---
-  if (message.content.trim().toLowerCase() === '-rules') {
-    const select = new StringSelectMenuBuilder()
-      .setCustomId('rules_select')
-      .setPlaceholder('يرجى الاختيار')
-      .addOptions([
-        { label: 'قوانين مهمه', value: 'discord', emoji: '​📝' },
-        { label: 'العداوات بين العصابات', value: 'important', emoji: '​​☠️​' },
-        { label: 'ارتداء ملابس العصابة', value: 'general', emoji: '​​​🥼​​' },
-        { label: 'ملابس العصابة والرول بلاي', value: 'safezones', emoji: '​​​​🚨​​' },
-        { label: 'الحروب', value: 'crime', emoji: '⚔️' },
-        { label: 'نظام المخالفات', value: 'theft', emoji: '⛔' }
-          
-      ]);
+// --- NEW: -rules command posts a dropdown ---
+if (message.content.trim().toLowerCase() === '-rules') {
+  const select = new StringSelectMenuBuilder()
+    .setCustomId('rules_select')
+    .setPlaceholder('يرجى الاختيار')
+    .addOptions([
+      { label: 'قوانين مهمه', value: 'discord', emoji: '📝' },
+      { label: 'العداوات بين العصابات', value: 'important', emoji: '☠️' },
+      { label: 'ارتداء ملابس العصابة', value: 'general', emoji: '🥼' },
+      { label: 'ملابس العصابة والرول بلاي', value: 'safezones', emoji: '🚨' },
+      { label: 'الحروب', value: 'crime', emoji: '⚔️' },
+      { label: 'نظام المخالفات', value: 'theft', emoji: '⛔' }
+    ]);
 
-    const row = new ActionRowBuilder().addComponents(select);
+  const row = new ActionRowBuilder().addComponents(select);
 
-    const embed = new EmbedBuilder()
-  .setTitle('NewEra RP Gangs')
-  .setDescription('جميع القوانين للعصابات التابعة لسيرفر  New Era RP \n نرجوا منك إتباع جميع القوانين لكي لا يتم محاسبتك')
-  .setColor(0x00BFFF)
-  .setImage('https://cdn.discordapp.com/attachments/1346320702772613297/1403936450587791562/benner_gif.gif?ex=68995d35&is=68980bb5&hm=58481452818f321ec6ea6721c8c426d6c029777d9b75c83cf209f2e4dc270451&');
+  const embed = new EmbedBuilder()
+    .setTitle('NewEra RP Gangs')
+    .setDescription(
+      'جميع القوانين للعصابات التابعة لسيرفر New Era RP \n نرجوا منك إتباع جميع القوانين لكي لا يتم محاسبتك'
+    )
+    .setColor(0x00BFFF)
+    .setImage('https://cdn.discordapp.com/attachments/1346320702772613297/1403936450587791562/benner_gif.gif?ex=68995d35&is=68980bb5&hm=58481452818f321ec6ea6721c8c426d6c029777d9b75c83cf209f2e4dc270451&');
 
-    await message.channel.send({ embeds: [embed], components: [row] });
-  }
+  await message.channel.send({ embeds: [embed], components: [row] });
+}
 });
 
 // =============== INTERACTIONS ==================
